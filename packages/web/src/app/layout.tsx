@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { headers } from "next/headers";
+import { cookieToInitialState } from "wagmi";
+import { wagmiAdapter } from "../aa/wagmiConfig";
 import { Web3Providers } from "../aa/Providers";
 import "./globals.css";
 
@@ -18,17 +21,22 @@ export const metadata: Metadata = {
   description: "Account Abstraction wallet demo with permissionless.js",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialState = cookieToInitialState(
+    wagmiAdapter.wagmiConfig,
+    (await headers()).get("cookie"),
+  );
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Web3Providers>{children}</Web3Providers>
+        <Web3Providers initialState={initialState}>{children}</Web3Providers>
       </body>
     </html>
   );

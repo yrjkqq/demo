@@ -1,6 +1,7 @@
 "use client";
 
-import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { useAppKit } from "@reown/appkit/react";
+import Link from "next/link";
 import { useSmartAccount } from "../../aa/useSmartAccount";
 import { chain } from "../../aa/wagmiConfig";
 import type { Address } from "viem";
@@ -14,6 +15,7 @@ function getExplorerUrl(type: "address" | "tx", value: string) {
 }
 
 export default function AAWalletPage() {
+  const { open } = useAppKit();
   const {
     eoaAddress,
     isWalletConnected,
@@ -55,12 +57,19 @@ export default function AAWalletPage() {
           </p>
         </div>
 
-        {/* RainbowKit Connect Button */}
+        {/* Reown AppKit Connect */}
         <section className="flex flex-col gap-4 rounded-xl border border-[#eee] p-5 dark:border-[#222]">
           <h2 className="text-xs font-semibold tracking-widest text-[#999] uppercase dark:text-[#666]">
             连接钱包
           </h2>
-          <ConnectButton />
+          <button
+            onClick={() => open()}
+            className="flex h-11 cursor-pointer items-center justify-center rounded-full bg-blue-600 px-6 text-sm font-medium text-white transition-colors hover:bg-blue-700"
+          >
+            {isWalletConnected
+              ? `已连接: ${eoaAddress?.slice(0, 6)}...${eoaAddress?.slice(-4)}`
+              : "🔗 连接钱包"}
+          </button>
         </section>
 
         {/* Smart Account Info */}
@@ -167,12 +176,12 @@ export default function AAWalletPage() {
         )}
 
         {/* Back link */}
-        <a
+        <Link
           href="/"
           className="self-start text-sm text-[#999] underline transition-colors hover:text-black dark:hover:text-white"
         >
           ← 返回首页
-        </a>
+        </Link>
       </main>
     </div>
   );

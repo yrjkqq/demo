@@ -70,7 +70,7 @@ export function useSmartAccount(): SmartAccountState {
         // 用 wagmi 的 WalletClient 作为 Safe 账户的 owner
         const account = await toSafeSmartAccount({
           client: publicClient,
-          owners: [walletClient],
+          owners: [walletClient!],
           entryPoint: {
             address: entryPoint07Address,
             version: "0.7",
