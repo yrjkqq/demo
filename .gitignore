@@ -40,3 +40,6 @@ next-env.d.ts
 
 # Turbo
 .turbo
+
+# Auto-generated SQLite WASM assets
+packages/web/public/sqlite-wasm/
