@@ -70,9 +70,10 @@ export default function SQLiteDemoPage() {
     setError("");
 
     try {
-      // Dynamically import to avoid SSR issues
+      // Dynamically import — use variable to bypass TS module resolution
+      const sqliteModulePath = "/sqlite-wasm/index.mjs";
       const { sqlite3Worker1Promiser } = await import(
-        /* webpackIgnore: true */ "/sqlite-wasm/index.mjs"
+        /* webpackIgnore: true */ /* @vite-ignore */ sqliteModulePath
       );
 
       const promiser: Promiser = await new Promise((resolve) => {
