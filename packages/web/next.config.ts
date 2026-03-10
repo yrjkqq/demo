@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@demo/ui"],
+  transpilePackages: ["@just-swap-it/ui"],
   turbopack: {
     root: path.resolve(process.cwd(), "../.."),
   },

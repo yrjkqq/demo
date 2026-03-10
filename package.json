@@ -1,11 +1,11 @@
 {
-  "name": "demo-monorepo",
+  "name": "just-swap-it",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm -F @demo/web dev",
-    "interview": "pnpm -F @demo/interview test",
-    "interview:watch": "pnpm -F @demo/interview test:watch"
+    "dev": "pnpm -F @just-swap-it/web dev",
+    "interview": "pnpm -F @just-swap-it/interview test",
+    "interview:watch": "pnpm -F @just-swap-it/interview test:watch"
   },
   "packageManager": "pnpm@10.2.1"
 }

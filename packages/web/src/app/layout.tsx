@@ -17,8 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AA Wallet Demo",
-  description: "Account Abstraction wallet demo with permissionless.js",
+  title: "Just Swap It — AI-Powered Cross-Chain DEX",
+  description:
+    "Describe your swap in natural language. AI finds the best route, you just sign.",
 };
 
 export default async function RootLayout({
